@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MCU × DCEU — The Box Office Atlas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAF6ED;
+  --paper:#FFFFFF;
+  --ink:#181510;
+  --ink-soft:#4B4436;
+  --muted:#8C8271;
+  --line:#E6DFCC;
+  --line-soft:#EFE9DA;
+  --mcu:#2249E0;
+  --mcu-red:#D42B3D;
+  --mcu-tint:#EAEFFE;
+  --dc:#5B2A9E;
+  --dc-gold:#B9862B;
+  --dc-tint:#F1EAF9;
+  --dc-deep:#241653;
+  --shadow:0 18px 40px -20px rgba(24,21,16,.28);
+  --radius:2px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse 900px 500px at 82% -4%, rgba(91,42,158,.07), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 8% 8%, rgba(34,73,224,.06), transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  font-family:'Inter',system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--ink);color:var(--bg)}
+h1,h2,h3,h4,.serif{font-family:'Fraunces',Georgia,serif}
+a{color:inherit}
+.wrap{max-width:1320px;margin:0 auto;padding:0 32px}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+
+/* texture */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* ===== NAV ===== */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,246,237,.88);backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:64px;gap:24px}
+.nav-brand{font-family:'Fraunces';font-weight:600;font-size:19px;letter-spacing:-.01em;white-space:nowrap}
+.nav-brand b{color:var(--mcu)}
+.nav-brand i{font-style:normal;color:var(--muted);margin:0 2px}
+.nav-brand em{font-style:normal;color:var(--dc)}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--ink-soft)}
+.nav-links a{text-decoration:none;position:relative;padding:4px 0}
+.nav-links a:hover{color:var(--ink)}
+.nav-updated{font-size:11px;color:var(--muted);white-space:nowrap;border:1px solid var(--line);padding:5px 10px;border-radius:20px}
+@media(max-width:880px){.nav-links{display:none}}
+
+/* ===== HERO ===== */
+.hero{position:relative;overflow:hidden;padding:76px 0 40px;z-index:1}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:end}
+.hero-eyebrow{font-size:13px;color:var(--muted);margin:0 0 18px;font-weight:500;letter-spacing:.02em}
+.hero h1{
+  font-size:clamp(52px,7.2vw,104px);line-height:.94;margin:0 0 22px;font-weight:600;letter-spacing:-.03em;
+}
+.hero h1 .x{color:var(--muted);font-weight:400;padding:0 6px;font-size:.7em}
+.hero h1 .m{color:var(--mcu)}
+.hero h1 .d{color:var(--dc)}
+.hero-sub{font-size:19px;font-family:'Fraunces';font-weight:500;color:var(--ink-soft);max-width:520px;margin:0 0 18px;line-height:1.35}
+.hero-body{font-size:15.5px;color:var(--ink-soft);max-width:480px;line-height:1.65;margin:0 0 30px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:2px;
+  font-size:14.5px;font-weight:600;text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:transform .15s ease, background .15s ease;
+}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border-color:var(--ink);color:var(--ink);background:transparent}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+
+/* hero mosaic — stylized, no real poster art */
+.mosaic{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;aspect-ratio:4/5}
+.mchip{position:relative;border-radius:1px;overflow:hidden;display:flex;align-items:flex-end;padding:8px;}
+.mchip span{font-family:'Fraunces';font-weight:600;font-size:11px;color:#fff;line-height:1.15;opacity:.92}
+.mchip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.55));}
+.mchip span{position:relative;z-index:1}
+
+.hero-stats{display:flex;gap:36px;margin-top:44px;padding-top:26px;border-top:1px solid var(--line)}
+.hstat b{display:block;font-family:'Fraunces';font-size:30px;font-weight:600;letter-spacing:-.02em}
+.hstat span{font-size:12.5px;color:var(--muted)}
+
+/* ===== SECTION SCAFFOLDING ===== */
+.section{padding:90px 0;position:relative;z-index:1}
+.section.tight{padding:60px 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
+.section-num{font-size:12.5px;color:var(--muted);margin:0 0 10px;font-weight:500}
+.section-head h2{font-size:clamp(30px,3.6vw,44px);margin:0;font-weight:600;letter-spacing:-.02em;max-width:640px}
+.section-desc{font-size:15px;color:var(--ink-soft);max-width:400px;line-height:1.6;margin:0}
+.divider{height:1px;background:var(--line);border:0;margin:0}
+
+/* toggle pills */
+.pillbar{display:flex;gap:8px;flex-wrap:wrap}
+.pill{
+  padding:9px 16px;border:1px solid var(--line);background:var(--paper);border-radius:20px;
+  font-size:13px;font-weight:600;cursor:pointer;color:var(--ink-soft);display:flex;align-items:center;gap:7px;
+  transition:border-color .15s, color .15s;
+}
+.pill:hover{border-color:var(--ink)}
+.pill.active{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.pill .dot{width:7px;height:7px;border-radius:50%}
+.pill.active .dot{background:currentColor}
+
+/* ===== MAIN CHART ===== */
+.chart-panel{background:var(--paper);border:1px solid var(--line);padding:28px 28px 20px;box-shadow:var(--shadow)}
+.chart-toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.legend{display:flex;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--ink-soft)}
+.legend span{display:flex;align-items:center;gap:7px}
+.legend i{width:16px;height:2.5px;border-radius:2px;display:inline-block}
+.legend i.dash{background-image:linear-gradient(90deg,currentColor 60%,transparent 0);background-size:7px 2.5px}
+#mainChart{width:100%;height:auto;display:block;overflow:visible}
+.chart-caption{font-size:12.5px;color:var(--muted);margin-top:14px;line-height:1.6;max-width:620px}
+.tip{
+  position:absolute;pointer-events:none;background:var(--ink);color:var(--bg);padding:12px 14px;
+  font-size:12.5px;line-height:1.5;min-width:180px;opacity:0;transform:translateY(4px);transition:opacity .12s;z-index:10;
+}
+.tip b{font-family:'Fraunces';font-size:14.5px;font-weight:600;display:block;margin-bottom:2px}
+.tip .row{display:flex;justify-content:space-between;gap:14px;color:#cfc9bb}
+.tip .row b{font-family:'Inter';color:#fff;font-weight:600;font-size:12.5px}
+
+/* ===== EFFICIENCY ===== */
+.eff-row{display:grid;grid-template-columns:190px 1fr 90px;align-items:center;gap:14px;padding:8px 0;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.eff-row:hover .eff-title{text-decoration:underline}
+.eff-title{font-size:13.5px;font-weight:600}
+.eff-meta{font-size:11px;color:var(--muted)}
+.eff-bar-track{height:8px;background:var(--line-soft);position:relative;overflow:hidden}
+.eff-bar-fill{height:100%;transition:width .5s ease}
+.eff-mult{text-align:right;font-family:'Fraunces';font-weight:600;font-size:15px}
+
+/* ===== TIMELINE ===== */
+.timeline-wrap{overflow-x:auto;padding-bottom:16px;margin:0 -32px;padding-left:32px;padding-right:32px}
+.timeline{position:relative;display:flex;min-width:max-content;padding:130px 0}
+.timeline-line{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line);}
+.tl-year{position:relative;width:150px;flex:0 0 auto;border-left:1px solid var(--line-soft)}
+.tl-year-label{position:absolute;top:50%;left:8px;transform:translateY(-50%);font-size:12px;color:var(--muted);font-weight:600}
+.tl-item{position:absolute;left:8px;width:132px;font-size:11.5px;line-height:1.35}
+.tl-item.above{bottom:calc(50% + 14px)}
+.tl-item.below{top:calc(50% + 14px)}
+.tl-dot{width:8px;height:8px;border-radius:50%;margin-bottom:6px}
+.tl-item.above .tl-dot{margin-left:0;margin-top:auto}
+.tl-title{font-weight:600;color:var(--ink)}
+.tl-sub{color:var(--muted);font-size:10.5px}
+
+/* ===== STATS / VS ===== */
+.vs-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:40px;align-items:start}
+.vs-col h3{font-family:'Fraunces';font-size:26px;margin:0 0 4px;font-weight:600}
+.vs-col .vs-tag{font-size:12px;color:var(--muted);margin-bottom:26px;display:block}
+.vs-big{font-family:'Fraunces';font-size:clamp(40px,5.2vw,64px);font-weight:600;letter-spacing:-.02em;line-height:1;margin:0 0 6px}
+.vs-label{font-size:12.5px;color:var(--muted);margin-bottom:24px}
+.vs-line{display:flex;justify-content:space-between;padding:12px 0;border-top:1px solid var(--line-soft);font-size:13.5px}
+.vs-line b{font-weight:600}
+.vs-mid{display:flex;flex-direction:column;align-items:center;padding-top:60px;gap:10px}
+.vs-mid .vsword{font-family:'Fraunces';font-style:italic;font-size:20px;color:var(--muted)}
+.vs-mid .vsline{width:1px;flex:1;background:var(--line)}
+.col-mcu .vs-big,.col-mcu h3{color:var(--mcu)}
+.col-dc .vs-big,.col-dc h3{color:var(--dc)}
+
+/* ===== POSTER CARDS (stylized, no real photos) ===== */
+.poster-card{position:relative;aspect-ratio:2/3;overflow:hidden;cursor:pointer;isolation:isolate}
+.poster-art{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.poster-card:hover .poster-art{transform:scale(1.055)}
+.poster-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(0,0,0,.62) 100%)}
+.poster-tag{position:relative;z-index:1;font-size:10px;color:rgba(255,255,255,.85);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;font-weight:600}
+.poster-title{position:relative;z-index:1;font-family:'Fraunces';color:#fff;font-weight:600;font-size:16px;line-height:1.14;margin-bottom:6px}
+.poster-meta{position:relative;z-index:1;color:rgba(255,255,255,.78);font-size:11.5px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.poster-card:hover .poster-meta{opacity:1;transform:translateY(0)}
+.poster-mark{position:absolute;top:14px;right:14px;z-index:1;font-family:'Fraunces';font-style:italic;font-size:13px;color:rgba(255,255,255,.55)}
+.gallery-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+@media(max-width:1000px){.gallery-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== EXPLORER ===== */
+.explorer-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:26px}
+.search-box{
+  flex:1;min-width:220px;border:1px solid var(--line);background:var(--paper);padding:12px 16px;
+  font-size:14px;font-family:inherit;outline:none;
+}
+.search-box:focus{border-color:var(--ink)}
+.select-box{border:1px solid var(--line);background:var(--paper);padding:12px 14px;font-size:13.5px;font-family:inherit;outline:none;color:var(--ink-soft)}
+.explorer-count{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.table-head{display:grid;grid-template-columns:44px 2.4fr .8fr 1fr 1fr .85fr;gap:12px;padding:0 16px 10px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);border-bottom:1px solid var(--line);font-weight:600}
+.table-head span{cursor:pointer}
+.film-row{display:grid;grid-template-columns:44px 2.4fr .8fr 1fr 1fr .85fr;gap:12px;padding:15px 16px;align-items:center;border-bottom:1px solid var(--line-soft);cursor:pointer;transition:background .12s}
+.film-row:hover{background:var(--paper)}
+.film-row .fr-order{font-size:12px;color:var(--muted);font-family:'Fraunces'}
+.film-row .fr-title{font-weight:600;font-size:14.5px}
+.film-row .fr-u{font-size:11px}
+.u-tag{display:inline-block;padding:3px 9px;font-size:10.5px;font-weight:700;letter-spacing:.03em;border-radius:20px}
+.u-tag.mcu{background:var(--mcu-tint);color:var(--mcu)}
+.u-tag.dceu{background:var(--dc-tint);color:var(--dc)}
+.fr-num{font-size:13.5px;font-variant-numeric:tabular-nums;font-weight:500}
+.fr-mult{font-family:'Fraunces';font-weight:600;font-size:14.5px}
+.fr-mult.good{color:#1B7A4A}
+.fr-mult.bad{color:var(--mcu-red)}
+@media(max-width:760px){
+  .table-head{display:none}
+  .film-row{grid-template-columns:1fr;gap:4px;padding:16px}
+}
+
+/* ===== MODAL ===== */
+.modal-veil{position:fixed;inset:0;background:rgba(20,16,10,.55);backdrop-filter:blur(3px);z-index:100;display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:60px 20px}
+.modal-veil.open{display:flex}
+.modal{background:var(--paper);max-width:760px;width:100%;box-shadow:0 40px 80px -30px rgba(0,0,0,.4);position:relative}
+.modal-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border:1px solid var(--line);background:var(--paper);cursor:pointer;font-size:16px;z-index:2}
+.modal-hero{padding:44px 40px 30px;color:#fff;position:relative}
+.modal-hero-tag{font-size:12px;text-transform:uppercase;letter-spacing:.06em;opacity:.85;margin-bottom:10px}
+.modal-hero h2{font-size:clamp(28px,4vw,42px);margin:0 0 6px;font-weight:600;line-height:1.05}
+.modal-hero .sub{font-size:13.5px;opacity:.85}
+.modal-nums{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.modal-num{padding:22px 24px;border-right:1px solid var(--line)}
+.modal-num:last-child{border-right:none}
+.modal-num b{display:block;font-family:'Fraunces';font-size:26px;font-weight:600}
+.modal-num span{font-size:11.5px;color:var(--muted)}
+.modal-body{padding:30px 40px 40px}
+.modal-body h4{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 10px;font-weight:600}
+.modal-body p{font-size:14.5px;line-height:1.7;color:var(--ink-soft);margin:0 0 28px}
+.mini-chart{display:flex;align-items:flex-end;gap:6px;height:90px;margin-bottom:8px}
+.mini-bar{flex:1;background:var(--line-soft);position:relative;min-width:0}
+.mini-bar.this{background:var(--ink)}
+.mini-bar span{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:9.5px;color:var(--muted);white-space:nowrap;margin-bottom:4px}
+.mini-labels{display:flex;gap:6px;font-size:9.5px;color:var(--muted);text-align:center}
+.mini-labels div{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.modal-source{font-size:11.5px;color:var(--muted);border-top:1px solid var(--line-soft);padding-top:18px}
+
+/* ===== RECORDS ===== */
+.records-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}
+.record-card{background:var(--paper);padding:26px 22px}
+.record-label{font-size:12px;color:var(--muted);margin-bottom:14px}
+.record-film{font-family:'Fraunces';font-weight:600;font-size:18px;margin-bottom:4px;line-height:1.2}
+.record-val{font-size:13px;color:var(--ink-soft)}
+@media(max-width:900px){.records-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== INSIGHTS ===== */
+.insight-list{display:flex;flex-direction:column}
+.insight{display:grid;grid-template-columns:70px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line)}
+.insight:last-child{border-bottom:1px solid var(--line)}
+.insight-n{font-family:'Fraunces';font-size:22px;color:var(--muted);font-weight:500}
+.insight p{margin:0;font-size:16px;line-height:1.65;font-family:'Fraunces';color:var(--ink)}
+.insight p b{color:var(--mcu);font-weight:600}
+.insight p em{color:var(--dc);font-weight:600;font-style:normal}
+
+/* ===== METHOD / FOOTER ===== */
+.method{background:var(--dc-deep);color:#EDE7F7;padding:70px 0 50px}
+.method h2{color:#fff;font-size:26px;margin:0 0 20px}
+.method-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;font-size:13.5px;line-height:1.75;color:#C9BFE0}
+.method h4{color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.05em;margin:22px 0 8px;font-weight:600}
+.method h4:first-child{margin-top:0}
+.method a{color:#fff;text-decoration:underline;text-underline-offset:2px}
+footer{padding:24px 0 60px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .mosaic{max-width:380px}
+  .vs-grid{grid-template-columns:1fr}
+  .vs-mid{display:none}
+  .records-grid{grid-template-columns:1fr 1fr}
+  .method-grid{grid-template-columns:1fr}
+  .insight{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .wrap{padding:0 18px}
+  .modal-nums{grid-template-columns:1fr}
+  .modal-num{border-right:none;border-bottom:1px solid var(--line)}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style></head><body>
+<nav class="nav">
+  <div class="wrap nav-in">
+    <div class="nav-brand"><b>MCU</b><i>×</i><em>DCEU</em></div>
+    <div class="nav-links">
+      <a href="#chart">Chart</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#films">Films</a>
+      <a href="#records">Records</a>
+      <a href="#insights">Insights</a>
+      <a href="#method">Methodology</a>
+    </div>
+    <div class="nav-updated">Updated Sept 2026</div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hero-eyebrow">The Box Office Atlas · 53 theatrical films, 2008–2026</p>
+      <h1><span class="m">MCU</span><span class="x">×</span><span class="d">DCEU</span></h1>
+      <p class="hero-sub">Eighteen years, two studios, and one running argument about who's actually winning.</p>
+      <p class="hero-body">This atlas tracks every theatrical release from Marvel's Cinematic Universe and DC's Extended Universe — budgets, worldwide collections, and release history — from <i>Iron Man</i> in 2008 through the still-unspooling run of <i>Spider-Man: Brand New Day</i> today.</p>
+      <div class="hero-cta">
+        <a href="#chart" class="btn btn-primary">Explore the chart</a>
+        <a href="#films" class="btn btn-ghost">Browse all films</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><b id="heroFilms">53</b><span>Films tracked</span></div>
+        <div class="hstat"><b id="heroTotal">—</b><span>Combined worldwide gross</span></div>
+        <div class="hstat"><b id="heroYears">18</b><span>Years of releases</span></div>
+      </div>
+    </div>
+    <div class="mosaic" id="heroMosaic"></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="section" id="chart">
+  <div class="section-head">
+    <div>
+      <p class="section-num">01 — The big picture</p>
+      <h2>Budget vs. worldwide collection</h2>
+    </div>
+    <p class="section-desc">Every film plotted by real release date. Toggle a universe, or layer in production budgets to see where the money actually went.</p>
+  </div>
+  <div class="chart-panel" style="position:relative">
+    <div class="chart-toolbar">
+      <div class="pillbar" id="chartUniverseToggle">
+        <button class="pill active" data-u="ALL">All 53</button>
+        <button class="pill" data-u="MCU"><span class="dot" style="background:#2249E0"></span>MCU · 38</button>
+        <button class="pill" data-u="DCEU"><span class="dot" style="background:#5B2A9E"></span>DCEU · 15</button>
+      </div>
+      <div class="pillbar">
+        <button class="pill" id="budgetToggle">+ Show production budget</button>
+      </div>
+    </div>
+    <div class="legend" id="chartLegend"></div>
+    <div id="chartHost" style="position:relative;margin-top:14px"></div>
+    <p class="chart-caption">Worldwide box office is not the same as studio profit — marketing and distribution costs, typically 50–100% of a film's budget again, aren't included here. Click any point to open that film's full detail. <i>Spider-Man: Brand New Day</i> is still running theatrically; its total will keep climbing.</p>
+  </div>
+</section>
+
+<section class="section tight" id="efficiency">
+  <div class="section-head">
+    <div>
+      <p class="section-num">02 — Return on investment</p>
+      <h2>Budget efficiency</h2>
+    </div>
+    <p class="section-desc">Worldwide gross divided by production budget — the clearest read on which films actually earned their keep.</p>
+  </div>
+  <div class="pillbar" id="effToggle" style="margin-bottom:22px">
+    <button class="pill active" data-u="ALL">All films</button>
+    <button class="pill" data-u="MCU">MCU</button>
+    <button class="pill" data-u="DCEU">DCEU</button>
+  </div>
+  <div id="effList"></div>
+</section>
+
+<section class="section" id="timeline">
+  <div class="section-head">
+    <div>
+      <p class="section-num">03 — Eighteen years, side by side</p>
+      <h2>The evolution of superhero blockbusters</h2>
+    </div>
+    <p class="section-desc">MCU releases run above the line, DCEU releases run below it. Scroll to travel from 2008 to 2026.</p>
+  </div>
+  <div class="timeline-wrap"><div class="timeline" id="timelineHost"></div></div>
+</section>
+
+<section class="section" id="vs">
+  <div class="section-head">
+    <div>
+      <p class="section-num">04 — Head to head</p>
+      <h2>MCU vs. DCEU, by the numbers</h2>
+    </div>
+  </div>
+  <div class="vs-grid" id="vsHost"></div>
+</section>
+
+<section class="section" id="gallery">
+  <div class="section-head">
+    <div>
+      <p class="section-num">05 — The highlight reel</p>
+      <h2>Defining films of both universes</h2>
+    </div>
+    <p class="section-desc">Nineteen releases that shaped how each studio's box-office story gets told.</p>
+  </div>
+  <div class="gallery-grid" id="galleryHost"></div>
+</section>
+
+<section class="section" id="films">
+  <div class="section-head">
+    <div>
+      <p class="section-num">06 — Explore the archive</p>
+      <h2>Every film, searchable</h2>
+    </div>
+  </div>
+  <div class="explorer-controls">
+    <input class="search-box" id="searchInput" placeholder="Search a film…">
+    <select class="select-box" id="filterU">
+      <option value="ALL">All universes</option>
+      <option value="MCU">MCU only</option>
+      <option value="DCEU">DCEU only</option>
+    </select>
+    <select class="select-box" id="sortMode">
+      <option value="release">Release order</option>
+      <option value="gross-desc">Highest gross</option>
+      <option value="budget-desc">Largest budget</option>
+      <option value="mult-desc">Best gross / budget</option>
+      <option value="year-desc">Newest first</option>
+      <option value="year-asc">Oldest first</option>
+    </select>
+  </div>
+  <p class="explorer-count" id="explorerCount"></p>
+  <div class="table-head">
+    <span>#</span><span>Film</span><span>Universe</span><span>Budget</span><span>Worldwide</span><span style="text-align:right">Gross / budget</span>
+  </div>
+  <div id="filmTable"></div>
+</section>
+
+<section class="section" id="records">
+  <div class="section-head">
+    <div>
+      <p class="section-num">07 — Records &amp; outliers</p>
+      <h2>The extremes of both franchises</h2>
+    </div>
+  </div>
+  <div class="records-grid" id="recordsHost"></div>
+</section>
+
+<section class="section" id="insights">
+  <div class="section-head">
+    <div>
+      <p class="section-num">08 — What the data says</p>
+      <h2>Reading the two curves</h2>
+    </div>
+  </div>
+  <div class="insight-list" id="insightsHost"></div>
+</section>
+
+</main>
+
+<div class="method" id="method">
+  <div class="wrap">
+    <h2>Sources &amp; methodology</h2>
+    <div class="method-grid">
+      <div>
+        <h4>What's measured</h4>
+        <p><b style="color:#fff">Worldwide gross</b> is lifetime theatrical box office — every dollar of ticket sales, domestic and international combined. It is revenue, not profit: studios typically keep roughly half of domestic ticket revenue and a smaller share internationally, after the exhibitor's cut.</p>
+        <p><b style="color:#fff">Production budget</b> covers negotiated above- and below-the-line filmmaking costs. It excludes marketing and P&amp;A (prints and advertising) spend, which for a tentpole release commonly runs 50–100% of the production budget again.</p>
+      </div>
+      <div>
+        <h4>Why figures vary by source</h4>
+        <p>Studios rarely confirm final budgets, so tracking sites triangulate from insurance filings, trade reports, and tax-credit disclosures — figures for the same film can differ by tens of millions between outlets. Where a budget is genuinely contested, it's marked <i>estimate</i> in the explorer table.</p>
+        <h4>A note on Spider-Man: Brand New Day</h4>
+        <p>Released July 31, 2026, it is still in theatrical release as of this update. Its worldwide gross is current, not final, and will continue to rise before the run ends.</p>
+      </div>
+    </div>
+    <p style="margin-top:30px;font-size:12px;color:#9C8FBE">Figures compiled from The Numbers, Box Office Mojo, and Wikipedia box-office infoboxes. Dataset last updated September 14, 2026.</p>
+  </div>
+</div>
+
+<footer class="wrap">
+  <span>MCU × DCEU — The Box Office Atlas</span>
+  <span>Not affiliated with Marvel Studios, Walt Disney Studios, DC Studios, or Warner Bros.</span>
+</footer>
+
+<div class="modal-veil" id="modalVeil">
+  <div class="modal" id="modalContent"></div>
+</div>
+<script>
+const FILMS = [
+{id:"m1",u:"MCU",order:1,title:"Iron Man",year:2008,date:"2008-05-02",budget:0.14,gross:0.586,estB:true,phase:1,blurb:"The film that started it all. A mid-budget bet on a second-tier hero and a risky lead actor became the founding stone of the modern cinematic universe."},
+{id:"m2",u:"MCU",order:2,title:"The Incredible Hulk",year:2008,date:"2008-06-13",budget:0.15,gross:0.265,estB:true,phase:1},
+{id:"m3",u:"MCU",order:3,title:"Iron Man 2",year:2010,date:"2010-05-07",budget:0.2,gross:0.624,estB:true,phase:1},
+{id:"m4",u:"MCU",order:4,title:"Thor",year:2011,date:"2011-05-06",budget:0.15,gross:0.449,estB:true,phase:1},
+{id:"m5",u:"MCU",order:5,title:"Captain America: The First Avenger",year:2011,date:"2011-07-22",budget:0.14,gross:0.371,estB:true,phase:1},
+{id:"m6",u:"MCU",order:6,title:"The Avengers",year:2012,date:"2012-05-04",budget:0.225,gross:1.519,estB:false,phase:1,blurb:"The first-ever team-up crossed a billion dollars in nineteen days, proving that a shared universe of standalone heroes could sell tickets like nothing before it."},
+{id:"m7",u:"MCU",order:7,title:"Iron Man 3",year:2013,date:"2013-05-03",budget:0.2,gross:1.215,estB:false,phase:2},
+{id:"m8",u:"MCU",order:8,title:"Thor: The Dark World",year:2013,date:"2013-11-08",budget:0.17,gross:0.645,estB:true,phase:2},
+{id:"m9",u:"MCU",order:9,title:"Captain America: The Winter Soldier",year:2014,date:"2014-04-04",budget:0.17,gross:0.714,estB:true,phase:2},
+{id:"m10",u:"MCU",order:10,title:"Guardians of the Galaxy",year:2014,date:"2014-08-01",budget:0.17,gross:0.773,estB:true,phase:2,blurb:"A talking raccoon and a walking tree turned an obscure comic into one of Marvel's most beloved franchises, and proved the model could survive without the Avengers name."},
+{id:"m11",u:"MCU",order:11,title:"Avengers: Age of Ultron",year:2015,date:"2015-05-01",budget:0.365,gross:1.405,estB:true,phase:2},
+{id:"m12",u:"MCU",order:12,title:"Ant-Man",year:2015,date:"2015-07-17",budget:0.13,gross:0.519,estB:true,phase:2},
+{id:"m13",u:"MCU",order:13,title:"Captain America: Civil War",year:2016,date:"2016-05-06",budget:0.25,gross:1.155,estB:false,phase:3},
+{id:"m14",u:"MCU",order:14,title:"Doctor Strange",year:2016,date:"2016-11-04",budget:0.165,gross:0.677,estB:true,phase:3},
+{id:"m15",u:"MCU",order:15,title:"Guardians of the Galaxy Vol. 2",year:2017,date:"2017-05-05",budget:0.2,gross:0.863,estB:true,phase:3},
+{id:"m16",u:"MCU",order:16,title:"Spider-Man: Homecoming",year:2017,date:"2017-07-07",budget:0.175,gross:0.88,estB:true,phase:3},
+{id:"m17",u:"MCU",order:17,title:"Thor: Ragnarok",year:2017,date:"2017-11-03",budget:0.18,gross:0.854,estB:true,phase:3},
+{id:"m18",u:"MCU",order:18,title:"Black Panther",year:2018,date:"2018-02-16",budget:0.2,gross:1.347,estB:false,phase:3,blurb:"A cultural event as much as a box-office one. Black Panther held the top spot in America for five consecutive weeks and became the first superhero film nominated for Best Picture."},
+{id:"m19",u:"MCU",order:19,title:"Avengers: Infinity War",year:2018,date:"2018-04-27",budget:0.3,gross:2.048,estB:true,phase:3,blurb:"Ten years and eighteen films of setup paid off in a single ending nobody saw coming. Infinity War crossed two billion dollars in eleven days."},
+{id:"m20",u:"MCU",order:20,title:"Ant-Man and the Wasp",year:2018,date:"2018-07-06",budget:0.162,gross:0.623,estB:true,phase:3},
+{id:"m21",u:"MCU",order:21,title:"Captain Marvel",year:2019,date:"2019-03-08",budget:0.175,gross:1.129,estB:true,phase:3},
+{id:"m22",u:"MCU",order:22,title:"Avengers: Endgame",year:2019,date:"2019-04-26",budget:0.356,gross:2.799,estB:true,phase:3,blurb:"The largest theatrical release in history at the time, and for years the highest-grossing film ever made. Endgame closed the Infinity Saga on the biggest possible scale."},
+{id:"m23",u:"MCU",order:23,title:"Spider-Man: Far From Home",year:2019,date:"2019-07-02",budget:0.16,gross:1.132,estB:true,phase:3},
+{id:"m24",u:"MCU",order:24,title:"Black Widow",year:2021,date:"2021-07-09",budget:0.2,gross:0.379,estB:true,phase:4,blurb:"Delayed a full year by the pandemic and released day-and-date on Disney+, Black Widow became a flashpoint in the industry's fight over day-and-date streaming."},
+{id:"m25",u:"MCU",order:25,title:"Shang-Chi and the Legend of the Ten Rings",year:2021,date:"2021-09-03",budget:0.15,gross:0.432,estB:true,phase:4},
+{id:"m26",u:"MCU",order:26,title:"Eternals",year:2021,date:"2021-11-05",budget:0.2,gross:0.402,estB:true,phase:4},
+{id:"m27",u:"MCU",order:27,title:"Spider-Man: No Way Home",year:2021,date:"2021-12-17",budget:0.2,gross:1.922,estB:true,phase:4,blurb:"Arriving mid-pandemic, No Way Home reignited theatrical moviegoing almost single-handedly and became the first film in the Covid era to cross a billion dollars."},
+{id:"m28",u:"MCU",order:28,title:"Doctor Strange in the Multiverse of Madness",year:2022,date:"2022-05-06",budget:0.2,gross:0.956,estB:true,phase:4},
+{id:"m29",u:"MCU",order:29,title:"Thor: Love and Thunder",year:2022,date:"2022-07-08",budget:0.25,gross:0.76,estB:true,phase:4},
+{id:"m30",u:"MCU",order:30,title:"Black Panther: Wakanda Forever",year:2022,date:"2022-11-11",budget:0.25,gross:0.859,estB:true,phase:4},
+{id:"m31",u:"MCU",order:31,title:"Ant-Man and the Wasp: Quantumania",year:2023,date:"2023-02-17",budget:0.2,gross:0.476,estB:true,phase:5},
+{id:"m32",u:"MCU",order:32,title:"Guardians of the Galaxy Vol. 3",year:2023,date:"2023-05-05",budget:0.25,gross:0.846,estB:true,phase:5},
+{id:"m33",u:"MCU",order:33,title:"The Marvels",year:2023,date:"2023-11-10",budget:0.275,gross:0.206,estB:true,phase:5,blurb:"The lowest-grossing MCU film to date, and a widely cited symbol of the franchise's mid-decade box-office fatigue."},
+{id:"m34",u:"MCU",order:34,title:"Deadpool & Wolverine",year:2024,date:"2024-07-26",budget:0.2,gross:1.338,estB:true,phase:5,blurb:"Marvel's first R-rated entry after acquiring Fox, and proof the brand could still open huge — the biggest R-rated film ever made worldwide."},
+{id:"m35",u:"MCU",order:35,title:"Captain America: Brave New World",year:2025,date:"2025-02-14",budget:0.18,gross:0.415,estB:true,phase:5},
+{id:"m36",u:"MCU",order:36,title:"Thunderbolts*",year:2025,date:"2025-05-02",budget:0.18,gross:0.382,estB:true,phase:5},
+{id:"m37",u:"MCU",order:37,title:"The Fantastic Four: First Steps",year:2025,date:"2025-07-25",budget:0.2,gross:0.521,estB:false,phase:6,blurb:"Marvel's first family finally found box-office footing on a fifth attempt, opening to the biggest Marvel debut since Deadpool & Wolverine."},
+{id:"m38",u:"MCU",order:38,title:"Spider-Man: Brand New Day",year:2026,date:"2026-07-31",budget:0.225,gross:2.4,estB:false,estG:true,phase:6,blurb:"Currently the third-highest-grossing film in history, behind only Avatar and Endgame. It opened bigger than Endgame domestically and reached $2B faster than any film except Endgame — and it's still in theaters."},
+{id:"d1",u:"DCEU",order:1,title:"Man of Steel",year:2013,date:"2013-06-14",budget:0.225,gross:0.668,estB:true,era:"Foundation",blurb:"Zack Snyder's grounded, mythic reboot of Superman launched what would become the DC Extended Universe — a very different bet from Marvel's lighter house style."},
+{id:"d2",u:"DCEU",order:2,title:"Batman v Superman: Dawn of Justice",year:2016,date:"2016-03-25",budget:0.263,gross:0.874,estB:true,era:"Foundation"},
+{id:"d3",u:"DCEU",order:3,title:"Suicide Squad",year:2016,date:"2016-08-05",budget:0.175,gross:0.749,estB:true,era:"Foundation"},
+{id:"d4",u:"DCEU",order:4,title:"Wonder Woman",year:2017,date:"2017-06-02",budget:0.15,gross:0.823,estB:true,era:"Foundation",blurb:"The best-reviewed DCEU film and the highest-grossing film ever directed by a woman at the time — a genuine turning point for the studio."},
+{id:"d5",u:"DCEU",order:5,title:"Justice League",year:2017,date:"2017-11-17",budget:0.3,gross:0.658,estB:true,era:"Foundation",blurb:"A troubled production — Zack Snyder departed mid-shoot, Joss Whedon reshot large portions — that underperformed badly and became the DCEU's clearest cautionary tale."},
+{id:"d6",u:"DCEU",order:6,title:"Aquaman",year:2018,date:"2018-12-21",budget:0.16,gross:1.148,estB:true,era:"Expansion",blurb:"The DCEU's biggest hit by a wide margin. A colorful, maximalist spectacle that outgrossed every MCU film released the same year except Infinity War."},
+{id:"d7",u:"DCEU",order:7,title:"Shazam!",year:2019,date:"2019-04-05",budget:0.1,gross:0.366,estB:true,era:"Expansion"},
+{id:"d8",u:"DCEU",order:8,title:"Birds of Prey",year:2020,date:"2020-02-07",budget:0.084,gross:0.205,estB:true,era:"Expansion"},
+{id:"d9",u:"DCEU",order:9,title:"Wonder Woman 1984",year:2020,date:"2020-12-25",budget:0.2,gross:0.166,estB:true,era:"Expansion",blurb:"Released day-and-date on HBO Max during the pandemic's darkest theatrical months, making its box office essentially incomparable to any pre-2020 release."},
+{id:"d10",u:"DCEU",order:10,title:"The Suicide Squad",year:2021,date:"2021-08-06",budget:0.185,gross:0.168,estB:true,era:"Late era",blurb:"James Gunn's R-rated do-over was a critical favorite that nonetheless underperformed, hurt by a simultaneous HBO Max release during the pandemic."},
+{id:"d11",u:"DCEU",order:11,title:"Black Adam",year:2022,date:"2022-10-21",budget:0.2,gross:0.393,estB:true,era:"Late era"},
+{id:"d12",u:"DCEU",order:12,title:"Shazam! Fury of the Gods",year:2023,date:"2023-03-17",budget:0.125,gross:0.134,estB:true,era:"Late era"},
+{id:"d13",u:"DCEU",order:13,title:"The Flash",year:2023,date:"2023-06-16",budget:0.22,gross:0.271,estB:true,era:"Late era",blurb:"One of the most expensive box-office disappointments in studio history, and the film whose underperformance helped seal the DCEU's closure."},
+{id:"d14",u:"DCEU",order:14,title:"Blue Beetle",year:2023,date:"2023-08-18",budget:0.104,gross:0.13,estB:true,era:"Late era"},
+{id:"d15",u:"DCEU",order:15,title:"Aquaman and the Lost Kingdom",year:2023,date:"2023-12-22",budget:0.205,gross:0.439,estB:true,era:"Late era",blurb:"The DCEU's formal closing chapter, releasing weeks after James Gunn and Peter Safran's DC Studios reboot was already underway."}
+];
+(function(){
+"use strict";
+
+/* ---------- helpers ---------- */
+const $ = (s,el)=> (el||document).querySelector(s);
+const $$ = (s,el)=> Array.from((el||document).querySelectorAll(s));
+const fmtMoney = (b)=> b>=1 ? "$"+(Math.round(b*100)/100).toFixed(2).replace(/\.00$/,"").replace(/(\.\d)0$/,"$1")+"B"
+                             : "$"+Math.round(b*1000)+"M";
+const fmtMoneyFull = (b)=> b>=1 ? "$"+b.toFixed(3)+"B" : "$"+Math.round(b*1000)+"M";
+const mult = f => f.gross / f.budget;
+const fmtMult = f => mult(f).toFixed(1)+"×";
+const uColor = u => u==="MCU" ? "#2249E0" : "#5B2A9E";
+const uColorSoft = u => u==="MCU" ? "#7C93F2" : "#A87FD1";
+
+FILMS.forEach(f=>{ f.t = new Date(f.date).getTime(); });
+const MCU = FILMS.filter(f=>f.u==="MCU");
+const DCEU = FILMS.filter(f=>f.u==="DCEU");
+
+/* ---------- stylized poster art (no real photos — bespoke gradient/typographic cover art) ---------- */
+const MCU_GRADS = [
+  ["#0B2AA8","#2249E0"], ["#D42B3D","#8C1226"], ["#131A3D","#2249E0"],
+  ["#7C1F2E","#2249E0"], ["#08133D","#3D5CF2"], ["#A8192C","#131A3D"],
+];
+const DC_GRADS = [
+  ["#241653","#5B2A9E"], ["#B9862B","#5B2A9E"], ["#0F1035","#5B2A9E"],
+  ["#5B2A9E","#241653"], ["#8A5E1C","#241653"], ["#3A1B6E","#B9862B"],
+];
+function gradFor(f){
+  const pool = f.u==="MCU" ? MCU_GRADS : DC_GRADS;
+  return pool[(f.order-1) % pool.length];
+}
+function posterArtStyle(f){
+  const [a,b] = gradFor(f);
+  return `background:linear-gradient(150deg, ${a}, ${b} 78%);`;
+}
+
+/* ---------- HERO STATS + MOSAIC ---------- */
+function initHero(){
+  const total = FILMS.reduce((s,f)=>s+f.gross,0);
+  $("#heroTotal").textContent = "$"+total.toFixed(1)+"B";
+  const picks = [...MCU.slice(-4), ...DCEU.slice(-2), MCU[5], DCEU[3], MCU[21], DCEU[5], MCU[26], MCU[36]];
+  const host = $("#heroMosaic");
+  picks.slice(0,12).forEach(f=>{
+    const [a,b] = gradFor(f);
+    const div = document.createElement("div");
+    div.className="mchip";
+    div.style.background = `linear-gradient(155deg, ${a}, ${b} 85%)`;
+    div.innerHTML = `<span>${f.title}</span>`;
+    host.appendChild(div);
+  });
+}
+
+/* ================= MAIN CHART ================= */
+let chartFilter = "ALL", showBudget = false;
+function chartData(){
+  return FILMS.filter(f=> chartFilter==="ALL" || f.u===chartFilter).slice().sort((a,b)=>a.t-b.t);
+}
+function drawMainChart(){
+  const host = $("#chartHost");
+  const W = Math.max(host.clientWidth || host.parentElement.clientWidth, 320);
+  const isMobile = W < 640;
+  const H = isMobile ? 340 : 480;
+  const pad = {l: isMobile?40:56, r: 20, t:20, b: isMobile?58:70};
+  const data = chartData();
+  const minT = Math.min(...FILMS.map(f=>f.t)), maxT = Math.max(...FILMS.map(f=>f.t));
+  const maxY = Math.max(...FILMS.map(f=>Math.max(f.gross, showBudget?f.budget:0))) * 1.08;
+  const x = t => pad.l + (W-pad.l-pad.r) * (t-minT)/(maxT-minT);
+  const y = v => pad.t + (H-pad.t-pad.b) * (1 - v/maxY);
+
+  let svg = `<svg id="mainChart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}">`;
+
+  // gridlines + y labels
+  const steps = 5;
+  for(let i=0;i<=steps;i++){
+    const val = maxY*i/steps;
+    const yy = y(val);
+    svg += `<line x1="${pad.l}" y1="${yy}" x2="${W-pad.r}" y2="${yy}" stroke="#E6DFCC" stroke-width="1"/>`;
+    svg += `<text x="${pad.l-10}" y="${yy+4}" text-anchor="end" font-size="10.5" fill="#8C8271" font-family="Inter">$${val.toFixed(1)}B</text>`;
+  }
+
+  // phase era markers (only meaningful when MCU visible)
+  if(chartFilter!=="DCEU"){
+    const phaseStarts = {};
+    MCU.forEach(f=>{ if(!(f.phase in phaseStarts)) phaseStarts[f.phase]=f; });
+    Object.values(phaseStarts).forEach(f=>{
+      const xx = x(f.t);
+      svg += `<line x1="${xx}" y1="${pad.t}" x2="${xx}" y2="${H-pad.b}" stroke="#D6CDB4" stroke-width="1" stroke-dasharray="2,4"/>`;
+      if(!isMobile) svg += `<text x="${xx+4}" y="${pad.t+11}" font-size="9.5" fill="#8C8271" font-family="Inter">Phase ${f.phase}</text>`;
+    });
+  }
+
+  function pathFor(list, key, color, dashed){
+    if(list.length<2) return "";
+    let d = list.map((f,i)=> (i?"L":"M")+x(f.t).toFixed(1)+","+y(f[key]).toFixed(1)).join(" ");
+    return `<path d="${d}" fill="none" stroke="${color}" stroke-width="2.4" ${dashed?'stroke-dasharray="5,4"':""} stroke-linejoin="round"/>`;
+  }
+
+  const mcuD = data.filter(f=>f.u==="MCU");
+  const dcD = data.filter(f=>f.u==="DCEU");
+
+  if(showBudget){
+    svg += pathFor(mcuD.length?mcuD:data, "budget", "#B9AE95", true);
+    if(chartFilter!=="MCU") svg += pathFor(dcD, "budget", "#B9AE95", true);
+  }
+  if(chartFilter!=="DCEU") svg += pathFor(mcuD, "gross", "#2249E0", false);
+  if(chartFilter!=="MCU") svg += pathFor(dcD, "gross", "#5B2A9E", false);
+
+  // points
+  data.forEach(f=>{
+    const xx=x(f.t), yy=y(f.gross);
+    const c = uColor(f.u);
+    svg += `<circle class="pt" data-id="${f.id}" cx="${xx}" cy="${yy}" r="4.2" fill="${c}" stroke="#FAF6ED" stroke-width="1.6" style="cursor:pointer"/>`;
+  });
+
+  // x axis year ticks
+  const years = [...new Set(FILMS.map(f=>f.year))];
+  years.forEach((yr,i)=>{
+    if(!isMobile || i%2===0){
+      const sample = FILMS.find(f=>f.year===yr);
+      const xx = x(new Date(yr+"-06-15").getTime());
+      svg += `<text x="${xx}" y="${H-pad.b+22}" text-anchor="middle" font-size="10.5" fill="#8C8271" font-family="Inter">${yr}</text>`;
+    }
+  });
+  svg += `<line x1="${pad.l}" y1="${H-pad.b}" x2="${W-pad.r}" y2="${H-pad.b}" stroke="#E6DFCC"/>`;
+
+  svg += `</svg>`;
+  host.innerHTML = svg;
+
+  // tooltip + click behavior
+  let tip = document.createElement("div");
+  tip.className="tip";
+  host.appendChild(tip);
+  $$(".pt", host).forEach(pt=>{
+    const f = FILMS.find(x=>x.id===pt.dataset.id);
+    pt.addEventListener("mouseenter", e=>{
+      tip.style.opacity=1;
+      tip.innerHTML = `<b>${f.title}</b>${f.year} · ${f.u} · Release #${f.order}
+        <div class="row"><span>Budget</span><b>${fmtMoney(f.budget)}${f.estB?" (est.)":""}</b></div>
+        <div class="row"><span>Worldwide</span><b>${fmtMoney(f.gross)}${f.estG?" (current)":""}</b></div>
+        <div class="row"><span>Multiple</span><b>${fmtMult(f)}</b></div>`;
+      const r = pt.getBoundingClientRect(), hr = host.getBoundingClientRect();
+      let left = r.left-hr.left+14, top = r.top-hr.top-10;
+      if(left + 210 > hr.width) left = r.left-hr.left-224;
+      tip.style.left = left+"px"; tip.style.top = top+"px";
+    });
+    pt.addEventListener("mouseleave", ()=> tip.style.opacity=0);
+    pt.addEventListener("click", ()=> openModal(f.id));
+  });
+
+  // legend
+  $("#chartLegend").innerHTML = `
+    ${chartFilter!=="DCEU"?`<span><i style="background:#2249E0"></i>MCU worldwide gross</span>`:""}
+    ${chartFilter!=="MCU"?`<span><i style="background:#5B2A9E"></i>DCEU worldwide gross</span>`:""}
+    ${showBudget?`<span><i class="dash" style="background:#B9AE95;color:#B9AE95"></i>Production budget</span>`:""}
+  `;
+}
+$$("#chartUniverseToggle .pill").forEach(b=>b.addEventListener("click",()=>{
+  chartFilter = b.dataset.u;
+  $$("#chartUniverseToggle .pill").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  drawMainChart();
+}));
+$("#budgetToggle").addEventListener("click", e=>{
+  showBudget = !showBudget;
+  e.target.classList.toggle("active", showBudget);
+  e.target.textContent = showBudget ? "− Hide production budget" : "+ Show production budget";
+  drawMainChart();
+});
+window.addEventListener("resize", ()=>{ drawMainChart(); });
+
+/* ================= EFFICIENCY ================= */
+let effFilter="ALL";
+function drawEfficiency(){
+  const list = FILMS.filter(f=>effFilter==="ALL"||f.u===effFilter).slice().sort((a,b)=>mult(b)-mult(a));
+  const max = mult(list[0]);
+  $("#effList").innerHTML = list.map(f=>{
+    const w = Math.max(3, mult(f)/max*100);
+    return `<div class="eff-row" data-id="${f.id}">
+      <div><div class="eff-title">${f.title}</div><div class="eff-meta">${f.u} · ${f.year}</div></div>
+      <div class="eff-bar-track"><div class="eff-bar-fill" style="width:${w}%;background:${uColor(f.u)}"></div></div>
+      <div class="eff-mult">${fmtMult(f)}</div>
+    </div>`;
+  }).join("");
+  $$(".eff-row").forEach(r=>r.addEventListener("click",()=>openModal(r.dataset.id)));
+}
+$$("#effToggle .pill").forEach(b=>b.addEventListener("click",()=>{
+  effFilter=b.dataset.u;
+  $$("#effToggle .pill").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  drawEfficiency();
+}));
+
+/* ================= TIMELINE ================= */
+function drawTimeline(){
+  const years = [];
+  for(let y=2008;y<=2026;y++) years.push(y);
+  const host = $("#timelineHost");
+  host.innerHTML = `<div class="timeline-line"></div>` + years.map(yr=>{
+    const mcuFilms = MCU.filter(f=>f.year===yr);
+    const dcFilms = DCEU.filter(f=>f.year===yr);
+    let inner = `<div class="tl-year-label">${yr}</div>`;
+    mcuFilms.forEach((f,i)=>{
+      inner += `<div class="tl-item above" data-id="${f.id}" style="bottom:calc(50% + ${14+i*74}px)">
+        <div class="tl-dot" style="background:#2249E0"></div>
+        <div class="tl-title">${f.title}</div>
+        <div class="tl-sub">MCU · ${fmtMoney(f.gross)}</div>
+      </div>`;
+    });
+    dcFilms.forEach((f,i)=>{
+      inner += `<div class="tl-item below" data-id="${f.id}" style="top:calc(50% + ${14+i*74}px)">
+        <div class="tl-dot" style="background:#5B2A9E"></div>
+        <div class="tl-title">${f.title}</div>
+        <div class="tl-sub">DCEU · ${fmtMoney(f.gross)}</div>
+      </div>`;
+    });
+    return `<div class="tl-year" style="min-height:${Math.max(mcuFilms.length,dcFilms.length)*74+40}px">${inner}</div>`;
+  }).join("");
+  $$(".tl-item", host).forEach(el=>{ el.style.cursor="pointer"; el.addEventListener("click",()=>openModal(el.dataset.id)); });
+}
+
+/* ================= VS / STATS ================= */
+function statsFor(list){
+  const gross = list.reduce((s,f)=>s+f.gross,0);
+  const budget = list.reduce((s,f)=>s+f.budget,0);
+  const top = list.slice().sort((a,b)=>b.gross-a.gross)[0];
+  const biggestBudget = list.slice().sort((a,b)=>b.budget-a.budget)[0];
+  const bestMult = list.slice().sort((a,b)=>mult(b)-mult(a))[0];
+  return {gross,budget,top,biggestBudget,bestMult,avg:gross/list.length};
+}
+function drawVs(){
+  const m = statsFor(MCU), d = statsFor(DCEU);
+  $("#vsHost").innerHTML = `
+    <div class="vs-col col-mcu">
+      <h3>Marvel Cinematic Universe</h3><span class="vs-tag">38 films · 2008–2026</span>
+      <div class="vs-big">$${m.gross.toFixed(1)}B</div>
+      <div class="vs-label">Cumulative worldwide box office</div>
+      <div class="vs-line"><span>Highest grosser</span><b>${m.top.title}</b></div>
+      <div class="vs-line"><span>Largest budget</span><b>${m.biggestBudget.title}</b></div>
+      <div class="vs-line"><span>Best gross / budget</span><b>${m.bestMult.title} — ${fmtMult(m.bestMult)}</b></div>
+      <div class="vs-line"><span>Average worldwide gross</span><b>${fmtMoney(m.avg)}</b></div>
+    </div>
+    <div class="vs-mid"><div class="vsline"></div><span class="vsword">vs</span><div class="vsline"></div></div>
+    <div class="vs-col col-dc">
+      <h3>DC Extended Universe</h3><span class="vs-tag">15 films · 2013–2023</span>
+      <div class="vs-big">$${d.gross.toFixed(1)}B</div>
+      <div class="vs-label">Cumulative worldwide box office</div>
+      <div class="vs-line"><span>Highest grosser</span><b>${d.top.title}</b></div>
+      <div class="vs-line"><span>Largest budget</span><b>${d.biggestBudget.title}</b></div>
+      <div class="vs-line"><span>Best gross / budget</span><b>${d.bestMult.title} — ${fmtMult(d.bestMult)}</b></div>
+      <div class="vs-line"><span>Average worldwide gross</span><b>${fmtMoney(d.avg)}</b></div>
+    </div>
+  `;
+}
+
+/* ================= GALLERY (stylized cards) ================= */
+const GALLERY_TITLES = [
+  "Iron Man","The Avengers","Iron Man 3","Avengers: Age of Ultron","Black Panther",
+  "Avengers: Infinity War","Avengers: Endgame","Spider-Man: No Way Home","Deadpool & Wolverine","Spider-Man: Brand New Day",
+  "Man of Steel","Batman v Superman: Dawn of Justice","Wonder Woman","Justice League","Aquaman",
+  "The Suicide Squad","Black Adam","The Flash","Aquaman and the Lost Kingdom"
+];
+function drawGallery(){
+  const picks = GALLERY_TITLES.map(t=>FILMS.find(f=>f.title===t)).filter(Boolean);
+  $("#galleryHost").innerHTML = picks.map(f=>`
+    <div class="poster-card" data-id="${f.id}">
+      <div class="poster-art" style="${posterArtStyle(f)}">
+        <div class="poster-mark">${f.u==="MCU"?"MCU":"DCEU"}</div>
+        <div class="poster-tag">${f.year} · #${f.order}</div>
+        <div class="poster-title">${f.title}</div>
+        <div class="poster-meta">${fmtMoney(f.gross)} worldwide · ${fmtMoney(f.budget)} budget</div>
+      </div>
+    </div>`).join("");
+  $$(".poster-card").forEach(c=>c.addEventListener("click",()=>openModal(c.dataset.id)));
+}
+
+/* ================= EXPLORER ================= */
+let search="", filterU="ALL", sortMode="release";
+function currentList(){
+  let list = FILMS.filter(f=> (filterU==="ALL"||f.u===filterU) && f.title.toLowerCase().includes(search.toLowerCase()));
+  switch(sortMode){
+    case "gross-desc": list.sort((a,b)=>b.gross-a.gross); break;
+    case "budget-desc": list.sort((a,b)=>b.budget-a.budget); break;
+    case "mult-desc": list.sort((a,b)=>mult(b)-mult(a)); break;
+    case "year-desc": list.sort((a,b)=>b.t-a.t); break;
+    case "year-asc": list.sort((a,b)=>a.t-b.t); break;
+    default: list.sort((a,b)=>a.t-b.t);
+  }
+  return list;
+}
+function drawTable(){
+  const list = currentList();
+  $("#explorerCount").textContent = `Showing ${list.length} of 53 films`;
+  $("#filmTable").innerHTML = list.map(f=>`
+    <div class="film-row" data-id="${f.id}">
+      <div class="fr-order">${String(f.order).padStart(2,"0")}</div>
+      <div class="fr-title">${f.title}<div class="eff-meta">${f.year}</div></div>
+      <div class="fr-u"><span class="u-tag ${f.u==="MCU"?"mcu":"dceu"}">${f.u}</span></div>
+      <div class="fr-num">${fmtMoney(f.budget)}${f.estB?"*":""}</div>
+      <div class="fr-num">${fmtMoney(f.gross)}${f.estG?"†":""}</div>
+      <div class="fr-mult ${mult(f)>=1?'good':'bad'}" style="text-align:right">${fmtMult(f)}</div>
+    </div>`).join("");
+  $$(".film-row").forEach(r=>r.addEventListener("click",()=>openModal(r.dataset.id)));
+}
+$("#searchInput").addEventListener("input", e=>{ search=e.target.value; drawTable(); });
+$("#filterU").addEventListener("change", e=>{ filterU=e.target.value; drawTable(); });
+$("#sortMode").addEventListener("change", e=>{ sortMode=e.target.value; drawTable(); });
+
+/* ================= RECORDS ================= */
+function drawRecords(){
+  const byGross = FILMS.slice().sort((a,b)=>b.gross-a.gross);
+  const byBudget = FILMS.slice().sort((a,b)=>b.budget-a.budget);
+  const byMult = FILMS.slice().sort((a,b)=>mult(b)-mult(a));
+  const mcuTop = MCU.slice().sort((a,b)=>b.gross-a.gross)[0];
+  const dcTop = DCEU.slice().sort((a,b)=>b.gross-a.gross)[0];
+  const lowest = FILMS.slice().sort((a,b)=>a.gross-b.gross)[0];
+  const worstMult = FILMS.slice().sort((a,b)=>mult(a)-mult(b))[0];
+  const postPandemic = FILMS.filter(f=>f.year>=2021).slice().sort((a,b)=>b.gross-a.gross)[0];
+  // most expensive underperformer: big budget (>=$200M), weak return, distinct from the "weakest ratio" card
+  const expensiveUnder = FILMS.filter(f=>f.budget>=0.2 && f.id!==worstMult.id).slice().sort((a,b)=>mult(a)-mult(b))[0];
+
+  const cards = [
+    {label:"Highest-grossing MCU film", f:mcuTop, v:fmtMoney(mcuTop.gross)+" worldwide"},
+    {label:"Highest-grossing DCEU film", f:dcTop, v:fmtMoney(dcTop.gross)+" worldwide"},
+    {label:"Biggest production budget", f:byBudget[0], v:fmtMoney(byBudget[0].budget)+(byBudget[0].estB?" (est.)":"")},
+    {label:"Best gross ÷ budget ratio", f:byMult[0], v:fmtMult(byMult[0])+" return"},
+    {label:"Lowest-grossing film in the set", f:lowest, v:fmtMoney(lowest.gross)+" worldwide"},
+    {label:"Weakest gross ÷ budget ratio", f:worstMult, v:fmtMult(worstMult)+" return"},
+    {label:"Most expensive underperformer", f:expensiveUnder, v:fmtMoney(expensiveUnder.budget)+" budget, "+fmtMult(expensiveUnder)+" return"},
+    {label:"Biggest post-pandemic hit (2021–26)", f:postPandemic, v:fmtMoney(postPandemic.gross)+" worldwide"},
+  ];
+  $("#recordsHost").innerHTML = cards.map(c=>`
+    <div class="record-card" data-id="${c.f.id}" style="cursor:pointer">
+      <div class="record-label">${c.label}</div>
+      <div class="record-film">${c.f.title}</div>
+      <div class="record-val">${c.v}</div>
+    </div>`).join("");
+  $$(".record-card").forEach(r=>r.addEventListener("click",()=>openModal(r.dataset.id)));
+}
+
+/* ================= INSIGHTS (computed, not hardcoded) ================= */
+function longestStreakOverBillion(list){
+  let best=[], cur=[];
+  list.forEach(f=>{
+    if(f.gross>=1){ cur.push(f); if(cur.length>best.length) best=cur.slice(); }
+    else cur=[];
+  });
+  return best;
+}
+function drawInsights(){
+  const m = statsFor(MCU), d = statsFor(DCEU);
+  const allSorted = FILMS.slice().sort((a,b)=>a.gross-b.gross);
+  const median = allSorted[Math.floor(allSorted.length/2)].gross;
+  const pctBillion = Math.round(FILMS.filter(f=>f.gross>=1).length/FILMS.length*100);
+  const pct3x = Math.round(FILMS.filter(f=>mult(f)>=3).length/FILMS.length*100);
+  const streak = longestStreakOverBillion(MCU);
+  const avgBudget = FILMS.reduce((s,f)=>s+f.budget,0)/FILMS.length;
+  const avgMult = FILMS.reduce((s,f)=>s+mult(f),0)/FILMS.length;
+  const gap = ((m.gross - d.gross)/d.gross*100).toFixed(0);
+
+  const items = [
+    `The MCU's <b>38 films</b> have taken in <b>$${m.gross.toFixed(1)}B</b> worldwide against the DCEU's <b>15 films</b> and <em>$${d.gross.toFixed(1)}B</em> — a combined-gross gap of roughly ${gap}%, though the DCEU also released well under half as many films.`,
+    `Across all 53 releases, the median worldwide gross sits at <b>${fmtMoney(median)}</b> — a useful counterweight to the averages, which are pulled upward by a handful of multi-billion-dollar outliers like ${byGrossTop()}.`,
+    `${streak.length>1? `The MCU's longest run of consecutive $1B+ releases spans <b>${streak.length} films</b>, from <b>${streak[0].title}</b> (${streak[0].year}) through <b>${streak[streak.length-1].title}</b> (${streak[streak.length-1].year}).` : `No two consecutive MCU releases have both cleared $1B worldwide in the current run.`}`,
+    `<b>${pctBillion}%</b> of all 53 films crossed the $1B worldwide mark, and <em>${pct3x}%</em> returned at least 3× their production budget — the more forgiving bar, since it accounts for a film's actual cost rather than raw scale.`,
+    `The average production budget across the dataset is <b>${fmtMoney(avgBudget)}</b>, against an average gross-to-budget multiple of <b>${avgMult.toFixed(1)}×</b> — meaning the typical film in this set more than covers its production cost at the worldwide box office, before marketing spend is counted.`,
+  ];
+  $("#insightsHost").innerHTML = items.map((t,i)=>`<div class="insight"><div class="insight-n">${String(i+1).padStart(2,"0")}</div><p>${t}</p></div>`).join("");
+}
+function byGrossTop(){
+  const top = FILMS.slice().sort((a,b)=>b.gross-a.gross).slice(0,2);
+  return top.map(f=>`<i>${f.title}</i>`).join(" and ");
+}
+
+/* ================= MODAL ================= */
+function openModal(id){
+  const f = FILMS.find(x=>x.id===id);
+  if(!f) return;
+  const [a,b] = gradFor(f);
+  const sameUniverse = (f.u==="MCU"?MCU:DCEU);
+  const idx = sameUniverse.findIndex(x=>x.id===id);
+  const around = sameUniverse.slice(Math.max(0,idx-2), idx+3);
+  const maxG = Math.max(...around.map(x=>x.gross));
+  const miniBars = around.map(x=>`
+    <div class="mini-bar ${x.id===id?'this':''}" style="height:${Math.max(6,x.gross/maxG*90)}px">
+      <span>${fmtMoney(x.gross)}</span>
+    </div>`).join("");
+  const miniLabels = around.map(x=>`<div>${x.title.length>16?x.title.slice(0,15)+"…":x.title}</div>`).join("");
+
+  const rankInUniverse = sameUniverse.slice().sort((a,b)=>b.gross-a.gross).findIndex(x=>x.id===id)+1;
+
+  $("#modalContent").innerHTML = `
+    <button class="modal-close" id="modalCloseBtn">✕</button>
+    <div class="modal-hero" style="background:linear-gradient(150deg, ${a}, ${b} 85%)">
+      <div class="modal-hero-tag">${f.u} · Release #${f.order} · ${f.year}</div>
+      <h2>${f.title}</h2>
+      <div class="sub">Rank #${rankInUniverse} by worldwide gross within the ${f.u}${f.estG?" · figures current, film still in release":""}</div>
+    </div>
+    <div class="modal-nums">
+      <div class="modal-num"><b>${fmtMoneyFull(f.budget)}</b><span>Production budget${f.estB?" (estimate)":""}</span></div>
+      <div class="modal-num"><b>${fmtMoneyFull(f.gross)}</b><span>Worldwide box office${f.estG?" (current)":""}</span></div>
+      <div class="modal-num"><b>${fmtMult(f)}</b><span>Gross ÷ budget</span></div>
+    </div>
+    <div class="modal-body">
+      ${f.blurb?`<h4>Why it mattered</h4><p>${f.blurb}</p>`:""}
+      <h4>Compared with neighboring ${f.u} releases</h4>
+      <div class="mini-chart">${miniBars}</div>
+      <div class="mini-labels">${miniLabels}</div>
+      <p class="modal-source">Worldwide theatrical box office; figures compiled from The Numbers, Box Office Mojo and Wikipedia. See Methodology for how estimates are marked.</p>
+    </div>
+  `;
+  $("#modalCloseBtn").addEventListener("click", closeModal);
+  $("#modalVeil").classList.add("open");
+}
+function closeModal(){ $("#modalVeil").classList.remove("open"); }
+$("#modalVeil").addEventListener("click", e=>{ if(e.target.id==="modalVeil") closeModal(); });
+document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
+
+/* ================= INIT ================= */
+initHero();
+drawMainChart();
+drawEfficiency();
+drawTimeline();
+drawVs();
+drawGallery();
+drawTable();
+drawRecords();
+drawInsights();
+
+})();
+</script></body></html>

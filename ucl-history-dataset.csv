@@ -1,0 +1,435 @@
+team,seasonEndYear,season,xLabel,participated,sourceStage,displayStage,stageRank,winner,runnerUp
+Chelsea,1996,1995/96,96,False,,Did not participate,-1,False,False
+Chelsea,1997,1996/97,97,False,,Did not participate,-1,False,False
+Chelsea,1998,1997/98,98,False,,Did not participate,-1,False,False
+Chelsea,1999,1998/99,99,False,,Did not participate,-1,False,False
+Chelsea,2000,1999/00,00,True,Quarter-final,Quarter-final,4,False,False
+Chelsea,2001,2000/01,01,False,,Did not participate,-1,False,False
+Chelsea,2002,2001/02,02,False,,Did not participate,-1,False,False
+Chelsea,2003,2002/03,03,False,,Did not participate,-1,False,False
+Chelsea,2004,2003/04,04,True,Semi-final,Semi-final,5,False,False
+Chelsea,2005,2004/05,05,True,Semi-final,Semi-final,5,False,False
+Chelsea,2006,2005/06,06,True,Round of 16,Round of 16,3,False,False
+Chelsea,2007,2006/07,07,True,Semi-final,Semi-final,5,False,False
+Chelsea,2008,2007/08,08,True,Final,Runner-up,6,False,True
+Chelsea,2009,2008/09,09,True,Semi-final,Semi-final,5,False,False
+Chelsea,2010,2009/10,10,True,Round of 16,Round of 16,3,False,False
+Chelsea,2011,2010/11,11,True,Quarter-final,Quarter-final,4,False,False
+Chelsea,2012,2011/12,12,True,Final,Winner,7,True,False
+Chelsea,2013,2012/13,13,True,Group stage,Group / Second group phase,1,False,False
+Chelsea,2014,2013/14,14,True,Semi-final,Semi-final,5,False,False
+Chelsea,2015,2014/15,15,True,Round of 16,Round of 16,3,False,False
+Chelsea,2016,2015/16,16,True,Round of 16,Round of 16,3,False,False
+Chelsea,2017,2016/17,17,False,,Did not participate,-1,False,False
+Chelsea,2018,2017/18,18,True,Round of 16,Round of 16,3,False,False
+Chelsea,2019,2018/19,19,False,,Did not participate,-1,False,False
+Chelsea,2020,2019/20,20,True,Round of 16,Round of 16,3,False,False
+Chelsea,2021,2020/21,21,True,Final,Winner,7,True,False
+Chelsea,2022,2021/22,22,True,Quarter-final,Quarter-final,4,False,False
+Chelsea,2023,2022/23,23,True,Quarter-final,Quarter-final,4,False,False
+Chelsea,2024,2023/24,24,False,,Did not participate,-1,False,False
+Chelsea,2025,2024/25,25,False,,Did not participate,-1,False,False
+Chelsea,2026,2025/26,26,True,Round of 16,Round of 16,3,False,False
+Juventus,1996,1995/96,96,True,Final,Winner,7,True,False
+Juventus,1997,1996/97,97,True,Final,Runner-up,6,False,True
+Juventus,1998,1997/98,98,True,Final,Runner-up,6,False,True
+Juventus,1999,1998/99,99,True,Semi-final,Semi-final,5,False,False
+Juventus,2000,1999/00,00,False,,Did not participate,-1,False,False
+Juventus,2001,2000/01,01,True,First group stage,Group / Second group phase,1,False,False
+Juventus,2002,2001/02,02,True,Second group stage,Group / Second group phase,1,False,False
+Juventus,2003,2002/03,03,True,Final,Runner-up,6,False,True
+Juventus,2004,2003/04,04,True,Round of 16,Round of 16,3,False,False
+Juventus,2005,2004/05,05,True,Quarter-final,Quarter-final,4,False,False
+Juventus,2006,2005/06,06,True,Quarter-final,Quarter-final,4,False,False
+Juventus,2007,2006/07,07,False,,Did not participate,-1,False,False
+Juventus,2008,2007/08,08,False,,Did not participate,-1,False,False
+Juventus,2009,2008/09,09,True,Round of 16,Round of 16,3,False,False
+Juventus,2010,2009/10,10,True,Group stage,Group / Second group phase,1,False,False
+Juventus,2011,2010/11,11,False,,Did not participate,-1,False,False
+Juventus,2012,2011/12,12,False,,Did not participate,-1,False,False
+Juventus,2013,2012/13,13,True,Quarter-final,Quarter-final,4,False,False
+Juventus,2014,2013/14,14,True,Group stage,Group / Second group phase,1,False,False
+Juventus,2015,2014/15,15,True,Final,Runner-up,6,False,True
+Juventus,2016,2015/16,16,True,Round of 16,Round of 16,3,False,False
+Juventus,2017,2016/17,17,True,Final,Runner-up,6,False,True
+Juventus,2018,2017/18,18,True,Quarter-final,Quarter-final,4,False,False
+Juventus,2019,2018/19,19,True,Quarter-final,Quarter-final,4,False,False
+Juventus,2020,2019/20,20,True,Round of 16,Round of 16,3,False,False
+Juventus,2021,2020/21,21,True,Round of 16,Round of 16,3,False,False
+Juventus,2022,2021/22,22,True,Round of 16,Round of 16,3,False,False
+Juventus,2023,2022/23,23,True,Group stage,Group / Second group phase,1,False,False
+Juventus,2024,2023/24,24,False,,Did not participate,-1,False,False
+Juventus,2025,2024/25,25,True,Knockout play-offs,Knockout play-offs,2,False,False
+Juventus,2026,2025/26,26,True,Knockout play-offs,Knockout play-offs,2,False,False
+Bayern Munich,1996,1995/96,96,False,,Did not participate,-1,False,False
+Bayern Munich,1997,1996/97,97,False,,Did not participate,-1,False,False
+Bayern Munich,1998,1997/98,98,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,1999,1998/99,99,True,Final,Runner-up,6,False,True
+Bayern Munich,2000,1999/00,00,True,Semi-final,Semi-final,5,False,False
+Bayern Munich,2001,2000/01,01,True,Final,Winner,7,True,False
+Bayern Munich,2002,2001/02,02,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2003,2002/03,03,True,First group stage,Group / Second group phase,1,False,False
+Bayern Munich,2004,2003/04,04,True,Round of 16,Round of 16,3,False,False
+Bayern Munich,2005,2004/05,05,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2006,2005/06,06,True,Round of 16,Round of 16,3,False,False
+Bayern Munich,2007,2006/07,07,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2008,2007/08,08,False,,Did not participate,-1,False,False
+Bayern Munich,2009,2008/09,09,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2010,2009/10,10,True,Final,Runner-up,6,False,True
+Bayern Munich,2011,2010/11,11,True,Round of 16,Round of 16,3,False,False
+Bayern Munich,2012,2011/12,12,True,Final,Runner-up,6,False,True
+Bayern Munich,2013,2012/13,13,True,Final,Winner,7,True,False
+Bayern Munich,2014,2013/14,14,True,Semi-final,Semi-final,5,False,False
+Bayern Munich,2015,2014/15,15,True,Semi-final,Semi-final,5,False,False
+Bayern Munich,2016,2015/16,16,True,Semi-final,Semi-final,5,False,False
+Bayern Munich,2017,2016/17,17,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2018,2017/18,18,True,Semi-final,Semi-final,5,False,False
+Bayern Munich,2019,2018/19,19,True,Round of 16,Round of 16,3,False,False
+Bayern Munich,2020,2019/20,20,True,Final,Winner,7,True,False
+Bayern Munich,2021,2020/21,21,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2022,2021/22,22,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2023,2022/23,23,True,Quarter-final,Quarter-final,4,False,False
+Bayern Munich,2024,2023/24,24,True,Semi-final,Semi-final,5,False,False
+Bayern Munich,2025,2024/25,25,True,Semi-final,Quarter-final,4,False,False
+Bayern Munich,2026,2025/26,26,True,Semi-final,Semi-final,5,False,False
+Milan,1996,1995/96,96,False,,Did not participate,-1,False,False
+Milan,1997,1996/97,97,True,Group stage,Group / Second group phase,1,False,False
+Milan,1998,1997/98,98,False,,Did not participate,-1,False,False
+Milan,1999,1998/99,99,False,,Did not participate,-1,False,False
+Milan,2000,1999/00,00,True,First group stage,Group / Second group phase,1,False,False
+Milan,2001,2000/01,01,True,Second group stage,Group / Second group phase,1,False,False
+Milan,2002,2001/02,02,False,,Did not participate,-1,False,False
+Milan,2003,2002/03,03,True,Final,Winner,7,True,False
+Milan,2004,2003/04,04,True,Quarter-final,Quarter-final,4,False,False
+Milan,2005,2004/05,05,True,Final,Runner-up,6,False,True
+Milan,2006,2005/06,06,True,Semi-final,Semi-final,5,False,False
+Milan,2007,2006/07,07,True,Final,Winner,7,True,False
+Milan,2008,2007/08,08,True,Round of 16,Round of 16,3,False,False
+Milan,2009,2008/09,09,False,,Did not participate,-1,False,False
+Milan,2010,2009/10,10,True,Round of 16,Round of 16,3,False,False
+Milan,2011,2010/11,11,True,Round of 16,Round of 16,3,False,False
+Milan,2012,2011/12,12,True,Quarter-final,Quarter-final,4,False,False
+Milan,2013,2012/13,13,True,Round of 16,Round of 16,3,False,False
+Milan,2014,2013/14,14,True,Round of 16,Round of 16,3,False,False
+Milan,2015,2014/15,15,False,,Did not participate,-1,False,False
+Milan,2016,2015/16,16,False,,Did not participate,-1,False,False
+Milan,2017,2016/17,17,False,,Did not participate,-1,False,False
+Milan,2018,2017/18,18,False,,Did not participate,-1,False,False
+Milan,2019,2018/19,19,False,,Did not participate,-1,False,False
+Milan,2020,2019/20,20,False,,Did not participate,-1,False,False
+Milan,2021,2020/21,21,False,,Did not participate,-1,False,False
+Milan,2022,2021/22,22,True,Group stage,Group / Second group phase,1,False,False
+Milan,2023,2022/23,23,True,Semi-final,Semi-final,5,False,False
+Milan,2024,2023/24,24,True,Group stage,Group / Second group phase,1,False,False
+Milan,2025,2024/25,25,True,Knockout play-offs,Knockout play-offs,2,False,False
+Milan,2026,2025/26,26,False,,Did not participate,-1,False,False
+Manchester United,1996,1995/96,96,False,,Did not participate,-1,False,False
+Manchester United,1997,1996/97,97,True,Semi-final,Semi-final,5,False,False
+Manchester United,1998,1997/98,98,True,Quarter-final,Quarter-final,4,False,False
+Manchester United,1999,1998/99,99,True,Final,Winner,7,True,False
+Manchester United,2000,1999/00,00,True,Quarter-final,Quarter-final,4,False,False
+Manchester United,2001,2000/01,01,True,Quarter-final,Quarter-final,4,False,False
+Manchester United,2002,2001/02,02,True,Semi-final,Semi-final,5,False,False
+Manchester United,2003,2002/03,03,True,Quarter-final,Quarter-final,4,False,False
+Manchester United,2004,2003/04,04,True,Round of 16,Round of 16,3,False,False
+Manchester United,2005,2004/05,05,True,Round of 16,Round of 16,3,False,False
+Manchester United,2006,2005/06,06,True,Group stage,Group / Second group phase,1,False,False
+Manchester United,2007,2006/07,07,True,Semi-final,Semi-final,5,False,False
+Manchester United,2008,2007/08,08,True,Final,Winner,7,True,False
+Manchester United,2009,2008/09,09,True,Final,Runner-up,6,False,True
+Manchester United,2010,2009/10,10,True,Quarter-final,Quarter-final,4,False,False
+Manchester United,2011,2010/11,11,True,Final,Runner-up,6,False,True
+Manchester United,2012,2011/12,12,True,Group stage,Group / Second group phase,1,False,False
+Manchester United,2013,2012/13,13,True,Round of 16,Round of 16,3,False,False
+Manchester United,2014,2013/14,14,True,Quarter-final,Quarter-final,4,False,False
+Manchester United,2015,2014/15,15,False,,Did not participate,-1,False,False
+Manchester United,2016,2015/16,16,True,Group stage,Group / Second group phase,1,False,False
+Manchester United,2017,2016/17,17,False,,Did not participate,-1,False,False
+Manchester United,2018,2017/18,18,True,Round of 16,Round of 16,3,False,False
+Manchester United,2019,2018/19,19,True,Quarter-final,Quarter-final,4,False,False
+Manchester United,2020,2019/20,20,False,,Did not participate,-1,False,False
+Manchester United,2021,2020/21,21,True,Group stage,Group / Second group phase,1,False,False
+Manchester United,2022,2021/22,22,True,Round of 16,Round of 16,3,False,False
+Manchester United,2023,2022/23,23,False,,Did not participate,-1,False,False
+Manchester United,2024,2023/24,24,True,Group stage,Group / Second group phase,1,False,False
+Manchester United,2025,2024/25,25,False,,Did not participate,-1,False,False
+Manchester United,2026,2025/26,26,False,,Did not participate,-1,False,False
+Manchester City,1996,1995/96,96,False,,Did not participate,-1,False,False
+Manchester City,1997,1996/97,97,False,,Did not participate,-1,False,False
+Manchester City,1998,1997/98,98,False,,Did not participate,-1,False,False
+Manchester City,1999,1998/99,99,False,,Did not participate,-1,False,False
+Manchester City,2000,1999/00,00,False,,Did not participate,-1,False,False
+Manchester City,2001,2000/01,01,False,,Did not participate,-1,False,False
+Manchester City,2002,2001/02,02,False,,Did not participate,-1,False,False
+Manchester City,2003,2002/03,03,False,,Did not participate,-1,False,False
+Manchester City,2004,2003/04,04,False,,Did not participate,-1,False,False
+Manchester City,2005,2004/05,05,False,,Did not participate,-1,False,False
+Manchester City,2006,2005/06,06,False,,Did not participate,-1,False,False
+Manchester City,2007,2006/07,07,False,,Did not participate,-1,False,False
+Manchester City,2008,2007/08,08,False,,Did not participate,-1,False,False
+Manchester City,2009,2008/09,09,False,,Did not participate,-1,False,False
+Manchester City,2010,2009/10,10,False,,Did not participate,-1,False,False
+Manchester City,2011,2010/11,11,False,,Did not participate,-1,False,False
+Manchester City,2012,2011/12,12,True,Group stage,Group / Second group phase,1,False,False
+Manchester City,2013,2012/13,13,True,Group stage,Group / Second group phase,1,False,False
+Manchester City,2014,2013/14,14,True,Round of 16,Round of 16,3,False,False
+Manchester City,2015,2014/15,15,True,Round of 16,Round of 16,3,False,False
+Manchester City,2016,2015/16,16,True,Semi-final,Semi-final,5,False,False
+Manchester City,2017,2016/17,17,True,Round of 16,Round of 16,3,False,False
+Manchester City,2018,2017/18,18,True,Quarter-final,Quarter-final,4,False,False
+Manchester City,2019,2018/19,19,True,Quarter-final,Quarter-final,4,False,False
+Manchester City,2020,2019/20,20,True,Quarter-final,Quarter-final,4,False,False
+Manchester City,2021,2020/21,21,True,Final,Runner-up,6,False,True
+Manchester City,2022,2021/22,22,True,Semi-final,Semi-final,5,False,False
+Manchester City,2023,2022/23,23,True,Final,Winner,7,True,False
+Manchester City,2024,2023/24,24,True,Quarter-final,Quarter-final,4,False,False
+Manchester City,2025,2024/25,25,True,Knockout play-offs,Knockout play-offs,2,False,False
+Manchester City,2026,2025/26,26,True,Round of 16,Round of 16,3,False,False
+Inter,1996,1995/96,96,False,,Did not participate,-1,False,False
+Inter,1997,1996/97,97,False,,Did not participate,-1,False,False
+Inter,1998,1997/98,98,False,,Did not participate,-1,False,False
+Inter,1999,1998/99,99,True,Quarter-final,Quarter-final,4,False,False
+Inter,2000,1999/00,00,False,,Did not participate,-1,False,False
+Inter,2001,2000/01,01,True,Qualifying,Qualifying,0,False,False
+Inter,2002,2001/02,02,False,,Did not participate,-1,False,False
+Inter,2003,2002/03,03,True,Semi-final,Semi-final,5,False,False
+Inter,2004,2003/04,04,True,First group stage,Group / Second group phase,1,False,False
+Inter,2005,2004/05,05,True,Quarter-final,Quarter-final,4,False,False
+Inter,2006,2005/06,06,True,Quarter-final,Quarter-final,4,False,False
+Inter,2007,2006/07,07,True,Round of 16,Round of 16,3,False,False
+Inter,2008,2007/08,08,True,Round of 16,Round of 16,3,False,False
+Inter,2009,2008/09,09,True,Round of 16,Round of 16,3,False,False
+Inter,2010,2009/10,10,True,Final,Winner,7,True,False
+Inter,2011,2010/11,11,True,Quarter-final,Quarter-final,4,False,False
+Inter,2012,2011/12,12,True,Round of 16,Round of 16,3,False,False
+Inter,2013,2012/13,13,False,,Did not participate,-1,False,False
+Inter,2014,2013/14,14,False,,Did not participate,-1,False,False
+Inter,2015,2014/15,15,False,,Did not participate,-1,False,False
+Inter,2016,2015/16,16,False,,Did not participate,-1,False,False
+Inter,2017,2016/17,17,False,,Did not participate,-1,False,False
+Inter,2018,2017/18,18,False,,Did not participate,-1,False,False
+Inter,2019,2018/19,19,True,Group stage,Group / Second group phase,1,False,False
+Inter,2020,2019/20,20,True,Group stage,Group / Second group phase,1,False,False
+Inter,2021,2020/21,21,True,Group stage,Group / Second group phase,1,False,False
+Inter,2022,2021/22,22,True,Round of 16,Round of 16,3,False,False
+Inter,2023,2022/23,23,True,Final,Runner-up,6,False,True
+Inter,2024,2023/24,24,True,Round of 16,Round of 16,3,False,False
+Inter,2025,2024/25,25,True,Final,Runner-up,6,False,True
+Inter,2026,2025/26,26,True,Knockout play-offs,Knockout play-offs,2,False,False
+Liverpool,1996,1995/96,96,False,,Did not participate,-1,False,False
+Liverpool,1997,1996/97,97,False,,Did not participate,-1,False,False
+Liverpool,1998,1997/98,98,False,,Did not participate,-1,False,False
+Liverpool,1999,1998/99,99,False,,Did not participate,-1,False,False
+Liverpool,2000,1999/00,00,False,,Did not participate,-1,False,False
+Liverpool,2001,2000/01,01,False,,Did not participate,-1,False,False
+Liverpool,2002,2001/02,02,True,Quarter-final,Quarter-final,4,False,False
+Liverpool,2003,2002/03,03,True,First group stage,Group / Second group phase,1,False,False
+Liverpool,2004,2003/04,04,False,,Did not participate,-1,False,False
+Liverpool,2005,2004/05,05,True,Final,Winner,7,True,False
+Liverpool,2006,2005/06,06,True,Round of 16,Round of 16,3,False,False
+Liverpool,2007,2006/07,07,True,Final,Runner-up,6,False,True
+Liverpool,2008,2007/08,08,True,Semi-final,Semi-final,5,False,False
+Liverpool,2009,2008/09,09,True,Quarter-final,Quarter-final,4,False,False
+Liverpool,2010,2009/10,10,True,Group stage,Group / Second group phase,1,False,False
+Liverpool,2011,2010/11,11,False,,Did not participate,-1,False,False
+Liverpool,2012,2011/12,12,False,,Did not participate,-1,False,False
+Liverpool,2013,2012/13,13,False,,Did not participate,-1,False,False
+Liverpool,2014,2013/14,14,False,,Did not participate,-1,False,False
+Liverpool,2015,2014/15,15,True,Group stage,Group / Second group phase,1,False,False
+Liverpool,2016,2015/16,16,False,,Did not participate,-1,False,False
+Liverpool,2017,2016/17,17,False,,Did not participate,-1,False,False
+Liverpool,2018,2017/18,18,True,Final,Runner-up,6,False,True
+Liverpool,2019,2018/19,19,True,Final,Winner,7,True,False
+Liverpool,2020,2019/20,20,True,Round of 16,Round of 16,3,False,False
+Liverpool,2021,2020/21,21,True,Quarter-final,Quarter-final,4,False,False
+Liverpool,2022,2021/22,22,True,Final,Runner-up,6,False,True
+Liverpool,2023,2022/23,23,True,Round of 16,Round of 16,3,False,False
+Liverpool,2024,2023/24,24,False,,Did not participate,-1,False,False
+Liverpool,2025,2024/25,25,True,Round of 16,Round of 16,3,False,False
+Liverpool,2026,2025/26,26,True,Quarter-final,Quarter-final,4,False,False
+Real Madrid,1996,1995/96,96,True,Quarter-final,Quarter-final,4,False,False
+Real Madrid,1997,1996/97,97,False,,Did not participate,-1,False,False
+Real Madrid,1998,1997/98,98,True,Final,Winner,7,True,False
+Real Madrid,1999,1998/99,99,True,Quarter-final,Quarter-final,4,False,False
+Real Madrid,2000,1999/00,00,True,Final,Winner,7,True,False
+Real Madrid,2001,2000/01,01,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2002,2001/02,02,True,Final,Winner,7,True,False
+Real Madrid,2003,2002/03,03,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2004,2003/04,04,True,Quarter-final,Quarter-final,4,False,False
+Real Madrid,2005,2004/05,05,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2006,2005/06,06,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2007,2006/07,07,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2008,2007/08,08,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2009,2008/09,09,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2010,2009/10,10,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2011,2010/11,11,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2012,2011/12,12,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2013,2012/13,13,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2014,2013/14,14,True,Final,Winner,7,True,False
+Real Madrid,2015,2014/15,15,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2016,2015/16,16,True,Final,Winner,7,True,False
+Real Madrid,2017,2016/17,17,True,Final,Winner,7,True,False
+Real Madrid,2018,2017/18,18,True,Final,Winner,7,True,False
+Real Madrid,2019,2018/19,19,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2020,2019/20,20,True,Round of 16,Round of 16,3,False,False
+Real Madrid,2021,2020/21,21,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2022,2021/22,22,True,Final,Winner,7,True,False
+Real Madrid,2023,2022/23,23,True,Semi-final,Semi-final,5,False,False
+Real Madrid,2024,2023/24,24,True,Final,Winner,7,True,False
+Real Madrid,2025,2024/25,25,True,Quarter-final,Quarter-final,4,False,False
+Real Madrid,2026,2025/26,26,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,1996,1995/96,96,False,,Did not participate,-1,False,False
+Barcelona,1997,1996/97,97,False,,Did not participate,-1,False,False
+Barcelona,1998,1997/98,98,True,Group stage,Group / Second group phase,1,False,False
+Barcelona,1999,1998/99,99,True,Group stage,Group / Second group phase,1,False,False
+Barcelona,2000,1999/00,00,True,Semi-final,Semi-final,5,False,False
+Barcelona,2001,2000/01,01,True,First group stage,Group / Second group phase,1,False,False
+Barcelona,2002,2001/02,02,True,Semi-final,Semi-final,5,False,False
+Barcelona,2003,2002/03,03,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,2004,2003/04,04,False,,Did not participate,-1,False,False
+Barcelona,2005,2004/05,05,True,Round of 16,Round of 16,3,False,False
+Barcelona,2006,2005/06,06,True,Final,Winner,7,True,False
+Barcelona,2007,2006/07,07,True,Round of 16,Round of 16,3,False,False
+Barcelona,2008,2007/08,08,True,Semi-final,Semi-final,5,False,False
+Barcelona,2009,2008/09,09,True,Final,Winner,7,True,False
+Barcelona,2010,2009/10,10,True,Semi-final,Semi-final,5,False,False
+Barcelona,2011,2010/11,11,True,Final,Winner,7,True,False
+Barcelona,2012,2011/12,12,True,Semi-final,Semi-final,5,False,False
+Barcelona,2013,2012/13,13,True,Semi-final,Semi-final,5,False,False
+Barcelona,2014,2013/14,14,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,2015,2014/15,15,True,Final,Winner,7,True,False
+Barcelona,2016,2015/16,16,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,2017,2016/17,17,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,2018,2017/18,18,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,2019,2018/19,19,True,Semi-final,Semi-final,5,False,False
+Barcelona,2020,2019/20,20,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,2021,2020/21,21,True,Round of 16,Round of 16,3,False,False
+Barcelona,2022,2021/22,22,True,Group stage,Group / Second group phase,1,False,False
+Barcelona,2023,2022/23,23,True,Group stage,Group / Second group phase,1,False,False
+Barcelona,2024,2023/24,24,True,Quarter-final,Quarter-final,4,False,False
+Barcelona,2025,2024/25,25,True,Semi-final,Semi-final,5,False,False
+Barcelona,2026,2025/26,26,True,Quarter-final,Quarter-final,4,False,False
+Atletico Madrid,1996,1995/96,96,False,,Did not participate,-1,False,False
+Atletico Madrid,1997,1996/97,97,True,Quarter-final,Quarter-final,4,False,False
+Atletico Madrid,1998,1997/98,98,False,,Did not participate,-1,False,False
+Atletico Madrid,1999,1998/99,99,False,,Did not participate,-1,False,False
+Atletico Madrid,2000,1999/00,00,False,,Did not participate,-1,False,False
+Atletico Madrid,2001,2000/01,01,False,,Did not participate,-1,False,False
+Atletico Madrid,2002,2001/02,02,False,,Did not participate,-1,False,False
+Atletico Madrid,2003,2002/03,03,False,,Did not participate,-1,False,False
+Atletico Madrid,2004,2003/04,04,False,,Did not participate,-1,False,False
+Atletico Madrid,2005,2004/05,05,False,,Did not participate,-1,False,False
+Atletico Madrid,2006,2005/06,06,False,,Did not participate,-1,False,False
+Atletico Madrid,2007,2006/07,07,False,,Did not participate,-1,False,False
+Atletico Madrid,2008,2007/08,08,False,,Did not participate,-1,False,False
+Atletico Madrid,2009,2008/09,09,True,Round of 16,Round of 16,3,False,False
+Atletico Madrid,2010,2009/10,10,True,Group stage,Group / Second group phase,1,False,False
+Atletico Madrid,2011,2010/11,11,False,,Did not participate,-1,False,False
+Atletico Madrid,2012,2011/12,12,False,,Did not participate,-1,False,False
+Atletico Madrid,2013,2012/13,13,False,,Did not participate,-1,False,False
+Atletico Madrid,2014,2013/14,14,True,Final,Runner-up,6,False,True
+Atletico Madrid,2015,2014/15,15,True,Quarter-final,Quarter-final,4,False,False
+Atletico Madrid,2016,2015/16,16,True,Final,Runner-up,6,False,True
+Atletico Madrid,2017,2016/17,17,True,Semi-final,Semi-final,5,False,False
+Atletico Madrid,2018,2017/18,18,True,Group stage,Group / Second group phase,1,False,False
+Atletico Madrid,2019,2018/19,19,True,Round of 16,Round of 16,3,False,False
+Atletico Madrid,2020,2019/20,20,True,Quarter-final,Quarter-final,4,False,False
+Atletico Madrid,2021,2020/21,21,True,Round of 16,Round of 16,3,False,False
+Atletico Madrid,2022,2021/22,22,True,Quarter-final,Quarter-final,4,False,False
+Atletico Madrid,2023,2022/23,23,True,Group stage,Group / Second group phase,1,False,False
+Atletico Madrid,2024,2023/24,24,True,Quarter-final,Quarter-final,4,False,False
+Atletico Madrid,2025,2024/25,25,True,Round of 16,Round of 16,3,False,False
+Atletico Madrid,2026,2025/26,26,True,Semi-final,Semi-final,5,False,False
+Dortmund,1996,1995/96,96,True,Quarter-final,Quarter-final,4,False,False
+Dortmund,1997,1996/97,97,True,Final,Winner,7,True,False
+Dortmund,1998,1997/98,98,True,Semi-final,Semi-final,5,False,False
+Dortmund,1999,1998/99,99,False,,Did not participate,-1,False,False
+Dortmund,2000,1999/00,00,True,First group stage,Group / Second group phase,1,False,False
+Dortmund,2001,2000/01,01,False,,Did not participate,-1,False,False
+Dortmund,2002,2001/02,02,True,Second group stage,Group / Second group phase,1,False,False
+Dortmund,2003,2002/03,03,True,Second group stage,Group / Second group phase,1,False,False
+Dortmund,2004,2003/04,04,True,Third qualifying round,Qualifying,0,False,False
+Dortmund,2005,2004/05,05,False,,Did not participate,-1,False,False
+Dortmund,2006,2005/06,06,False,,Did not participate,-1,False,False
+Dortmund,2007,2006/07,07,False,,Did not participate,-1,False,False
+Dortmund,2008,2007/08,08,False,,Did not participate,-1,False,False
+Dortmund,2009,2008/09,09,False,,Did not participate,-1,False,False
+Dortmund,2010,2009/10,10,False,,Did not participate,-1,False,False
+Dortmund,2011,2010/11,11,False,,Did not participate,-1,False,False
+Dortmund,2012,2011/12,12,True,Group stage,Group / Second group phase,1,False,False
+Dortmund,2013,2012/13,13,True,Final,Runner-up,6,False,True
+Dortmund,2014,2013/14,14,True,Quarter-final,Quarter-final,4,False,False
+Dortmund,2015,2014/15,15,True,Round of 16,Round of 16,3,False,False
+Dortmund,2016,2015/16,16,False,,Did not participate,-1,False,False
+Dortmund,2017,2016/17,17,True,Quarter-final,Quarter-final,4,False,False
+Dortmund,2018,2017/18,18,True,Group stage,Group / Second group phase,1,False,False
+Dortmund,2019,2018/19,19,True,Round of 16,Round of 16,3,False,False
+Dortmund,2020,2019/20,20,True,Round of 16,Round of 16,3,False,False
+Dortmund,2021,2020/21,21,True,Quarter-final,Quarter-final,4,False,False
+Dortmund,2022,2021/22,22,True,Group stage,Group / Second group phase,1,False,False
+Dortmund,2023,2022/23,23,True,Round of 16,Round of 16,3,False,False
+Dortmund,2024,2023/24,24,True,Final,Runner-up,6,False,True
+Dortmund,2025,2024/25,25,True,Quarter-final,Quarter-final,4,False,False
+Dortmund,2026,2025/26,26,True,Knockout play-offs,Knockout play-offs,2,False,False
+PSG,1996,1995/96,96,False,,Did not participate,-1,False,False
+PSG,1997,1996/97,97,False,,Did not participate,-1,False,False
+PSG,1998,1997/98,98,True,Group stage,Group / Second group phase,1,False,False
+PSG,1999,1998/99,99,False,,Did not participate,-1,False,False
+PSG,2000,1999/00,00,False,,Did not participate,-1,False,False
+PSG,2001,2000/01,01,True,Second group stage,Group / Second group phase,1,False,False
+PSG,2002,2001/02,02,False,,Did not participate,-1,False,False
+PSG,2003,2002/03,03,False,,Did not participate,-1,False,False
+PSG,2004,2003/04,04,False,,Did not participate,-1,False,False
+PSG,2005,2004/05,05,True,Group stage,Group / Second group phase,1,False,False
+PSG,2006,2005/06,06,False,,Did not participate,-1,False,False
+PSG,2007,2006/07,07,False,,Did not participate,-1,False,False
+PSG,2008,2007/08,08,False,,Did not participate,-1,False,False
+PSG,2009,2008/09,09,False,,Did not participate,-1,False,False
+PSG,2010,2009/10,10,False,,Did not participate,-1,False,False
+PSG,2011,2010/11,11,False,,Did not participate,-1,False,False
+PSG,2012,2011/12,12,False,,Did not participate,-1,False,False
+PSG,2013,2012/13,13,True,Quarter-final,Quarter-final,4,False,False
+PSG,2014,2013/14,14,True,Quarter-final,Quarter-final,4,False,False
+PSG,2015,2014/15,15,True,Quarter-final,Quarter-final,4,False,False
+PSG,2016,2015/16,16,True,Quarter-final,Quarter-final,4,False,False
+PSG,2017,2016/17,17,True,Round of 16,Round of 16,3,False,False
+PSG,2018,2017/18,18,True,Round of 16,Round of 16,3,False,False
+PSG,2019,2018/19,19,True,Round of 16,Round of 16,3,False,False
+PSG,2020,2019/20,20,True,Final,Runner-up,6,False,True
+PSG,2021,2020/21,21,True,Semi-final,Semi-final,5,False,False
+PSG,2022,2021/22,22,True,Round of 16,Round of 16,3,False,False
+PSG,2023,2022/23,23,True,Round of 16,Round of 16,3,False,False
+PSG,2024,2023/24,24,True,Semi-final,Semi-final,5,False,False
+PSG,2025,2024/25,25,True,Final,Winner,7,True,False
+PSG,2026,2025/26,26,True,Final,Winner,7,True,False
+Arsenal,1996,1995/96,96,False,,Did not participate,-1,False,False
+Arsenal,1997,1996/97,97,False,,Did not participate,-1,False,False
+Arsenal,1998,1997/98,98,False,,Did not participate,-1,False,False
+Arsenal,1999,1998/99,99,True,Group stage,Group / Second group phase,1,False,False
+Arsenal,2000,1999/00,00,True,First group stage,Group / Second group phase,1,False,False
+Arsenal,2001,2000/01,01,True,Quarter-final,Quarter-final,4,False,False
+Arsenal,2002,2001/02,02,True,Second group stage,Group / Second group phase,1,False,False
+Arsenal,2003,2002/03,03,True,Second group stage,Group / Second group phase,1,False,False
+Arsenal,2004,2003/04,04,True,Quarter-final,Quarter-final,4,False,False
+Arsenal,2005,2004/05,05,True,Round of 16,Round of 16,3,False,False
+Arsenal,2006,2005/06,06,True,Final,Runner-up,6,False,True
+Arsenal,2007,2006/07,07,True,Round of 16,Round of 16,3,False,False
+Arsenal,2008,2007/08,08,True,Quarter-final,Quarter-final,4,False,False
+Arsenal,2009,2008/09,09,True,Semi-final,Semi-final,5,False,False
+Arsenal,2010,2009/10,10,True,Quarter-final,Quarter-final,4,False,False
+Arsenal,2011,2010/11,11,True,Round of 16,Round of 16,3,False,False
+Arsenal,2012,2011/12,12,True,Round of 16,Round of 16,3,False,False
+Arsenal,2013,2012/13,13,True,Round of 16,Round of 16,3,False,False
+Arsenal,2014,2013/14,14,True,Round of 16,Round of 16,3,False,False
+Arsenal,2015,2014/15,15,True,Round of 16,Round of 16,3,False,False
+Arsenal,2016,2015/16,16,True,Round of 16,Round of 16,3,False,False
+Arsenal,2017,2016/17,17,True,Round of 16,Round of 16,3,False,False
+Arsenal,2018,2017/18,18,False,,Did not participate,-1,False,False
+Arsenal,2019,2018/19,19,False,,Did not participate,-1,False,False
+Arsenal,2020,2019/20,20,False,,Did not participate,-1,False,False
+Arsenal,2021,2020/21,21,False,,Did not participate,-1,False,False
+Arsenal,2022,2021/22,22,False,,Did not participate,-1,False,False
+Arsenal,2023,2022/23,23,False,,Did not participate,-1,False,False
+Arsenal,2024,2023/24,24,True,Quarter-final,Quarter-final,4,False,False
+Arsenal,2025,2024/25,25,True,Semi-final,Semi-final,5,False,False
+Arsenal,2026,2025/26,26,True,Final,Runner-up,6,False,True
